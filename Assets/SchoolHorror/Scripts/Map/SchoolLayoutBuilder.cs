@@ -49,8 +49,30 @@ namespace SchoolHorror
             map.PlayerStart = new Vector2Int(2, 13);
             map.AngelStart = new Vector2Int(58, 36);
 
+            AddCorridorProps();
             AddCorridorCandles();
             return map;
+        }
+
+        void AddCorridorProps()
+        {
+            // Tủ locker & máy bán nước dọc tường bắc hành lang B (y = 37)
+            int[] singleB = { 12, 22, 45 };
+            foreach (int x in singleB) map.Set(x, 37, TileType.CorridorProp);
+
+            int[] doubleB = { 5, 8, 18, 35, 39, 50, 54 };
+            foreach (int x in doubleB)
+            {
+                map.Set(x, 37, TileType.CorridorProp);
+                map.Set(x + 1, 37, TileType.CorridorProp);
+            }
+
+            // Tủ locker xám dọc tường hành lang A (y = 14)
+            foreach (int x0 in RoomColumns) map.Set(x0, 14, TileType.CorridorProp);
+
+            // Tủ locker mở dọc hành lang giữa (y = 25)
+            map.Set(27, 25, TileType.CorridorProp);
+            map.Set(55, 25, TileType.CorridorProp);
         }
 
         /// <summary>Phòng học: bảng đen + bục giảng ở đầu phía tây, bàn học sinh quay về bảng.</summary>

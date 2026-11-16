@@ -52,7 +52,7 @@ namespace SchoolHorror
         bool IsFurniture(int x, int y)
         {
             TileType t = Get(x, y);
-            return t == TileType.Desk || t == TileType.TeacherDesk;
+            return t == TileType.Desk || t == TileType.TeacherDesk || t == TileType.CorridorProp;
         }
 
         bool IsClosedDoor(int x, int y)

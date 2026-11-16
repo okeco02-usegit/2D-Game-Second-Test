@@ -7,6 +7,7 @@ namespace SchoolHorror
     {
         public readonly Material UnlitMaterial;
         public readonly Sprite Player;
+        public readonly Sprite[] PlayerWalk;
         public readonly Sprite Angel;
         public readonly Sprite Key;
         public readonly Sprite Battery;
@@ -26,6 +27,9 @@ namespace SchoolHorror
             UnlitMaterial = new Material(shader);
 
             Player = PixelBuffer.FromArt(PlayerArt, PlayerColor).ToSprite(Feet);
+            Sprite walkLeft = PixelBuffer.FromArt(PlayerWalkLeftArt, PlayerColor).ToSprite(Feet);
+            Sprite walkRight = PixelBuffer.FromArt(PlayerWalkRightArt, PlayerColor).ToSprite(Feet);
+            PlayerWalk = new[] { walkLeft, Player, walkRight, Player };
             Angel = PixelBuffer.FromArt(AngelArt, AngelColor).ToSprite(Feet);
             Key = PixelBuffer.FromArt(KeyArt, ItemColor).ToSprite(Center);
             Battery = PixelBuffer.FromArt(BatteryArt, ItemColor).ToSprite(Center);
@@ -56,6 +60,46 @@ namespace SchoolHorror
             "..pppppppp..",
             "..ppp..ppp..",
             "..bbb..bbb..",
+        };
+
+        static readonly string[] PlayerWalkLeftArt =
+        {
+            "............",
+            "....hhhh....",
+            "...hhhhhh...",
+            "..hhhhhhhh..",
+            "..hhsssshh..",
+            "..hsesseSh..",
+            "..hssssssh..",
+            "...ssssss...",
+            "..cccccccc..",
+            ".Cccccccccs.",
+            ".CccccccCsc.",
+            "..ccccccccs.",
+            "..pppppppp..",
+            "..ppp..ppp..",
+            "..bbb...pp..",
+            "..bbb...bb..",
+        };
+
+        static readonly string[] PlayerWalkRightArt =
+        {
+            "............",
+            "....hhhh....",
+            "...hhhhhh...",
+            "..hhhhhhhh..",
+            "..hhsssshh..",
+            "..hsesseSh..",
+            "..hssssssh..",
+            "...ssssss...",
+            "..cccccccc..",
+            ".sccccccccC.",
+            ".csCccccccC.",
+            ".scccccccc..",
+            "..pppppppp..",
+            "..ppp..ppp..",
+            "..pp...bbb..",
+            "..bb...bbb..",
         };
 
         static Color32 PlayerColor(char ch)

@@ -6,6 +6,24 @@ namespace SchoolHorror
     public static class TilePainter
     {
         const int T = GameConfig.PixelsPerTile;
+        static Color32[] atlas;
+        static int atlasW, atlasH;
+
+        static void EnsureAtlas()
+        {
+            if (atlas != null) return;
+            var tex = Resources.Load<Texture2D>("FurnitureAbandoned");
+            if (tex == null) return;
+            atlas = tex.GetPixels32();
+            atlasW = tex.width;
+            atlasH = tex.height;
+        }
+
+        static void Blit(PixelBuffer b, int srcX, int srcYTop, int w, int h, int dstX, int dstYBottom)
+        {
+            EnsureAtlas();
+            b.BlitAtlas(atlas, atlasW, atlasH, srcX, srcYTop, w, h, dstX, dstYBottom);
+        }
 
         static Color32 Vary(Color32 c, int amount, System.Random rng)
         {
@@ -204,29 +222,170 @@ namespace SchoolHorror
             b.Fill(ox + signX, oy + 13, 6, 2, Palette.ExitGreen);
         }
 
-        /// <summary>Bàn học sinh kèm ghế, có bóng đổ dưới mép bàn.</summary>
-        public static void Desk(PixelBuffer b, int tx, int ty)
+        /// <summary>Ghế học sinh (chân sắt trắng, mặt & lưng gỗ) đặt tại một chỗ ngồi của bàn.</summary>
+        static void PaintStudentChair(PixelBuffer b, int ox, int oy, System.Random rng)
         {
-            int ox = tx * T, oy = ty * T;
-            for (int lx = 2; lx <= 13; lx++) b.Darken(ox + lx, oy + 5, 0.55f);
-            b.Fill(ox + 2, oy + 6, 12, 8, Palette.Desk);
-            b.Fill(ox + 2, oy + 13, 12, 1, Palette.DeskLight);
-            b.Fill(ox + 2, oy + 6, 12, 1, Palette.DeskDark);
-            b.Fill(ox + 2, oy + 6, 1, 8, Palette.DeskDark);
-            b.Fill(ox + 13, oy + 6, 1, 8, Palette.DeskDark);
-            b.Fill(ox + 5, oy + 1, 6, 4, Palette.Chair);
-            b.Fill(ox + 5, oy + 1, 6, 1, Palette.DeskDark);
+            int roll = rng.Next(100);
+            if (roll < 12) // ghế dính máu nhìn từ trước
+                Blit(b, 273, 119, 14, 25, ox + 1, oy - 3);
+            else if (roll < 20) // ghế dính máu nhìn ngang
+                Blit(b, 290, 113, 13, 22, ox + 2, oy - 2);
+            else if (roll < 42) // ghế nhìn ngang (quay về phía bảng)
+                Blit(b, 258, 113, 13, 22, ox + 2, oy - 2);
+            else // ghế nhìn chính diện (lưng tựa nhô lên phía sau mặt bàn)
+                Blit(b, 225, 119, 14, 25, ox + 1, oy - 3);
         }
 
+        static void PaintDeskBook(PixelBuffer b, int ox, int oy, System.Random rng)
+        {
+            int roll = rng.Next(100);
+            if (roll < 22) Blit(b, 144, 15, 13, 7, ox + 2, oy + 7);      // vở mở
+            else if (roll < 38) Blit(b, 130, 14, 7, 8, ox + 4, oy + 7);  // sổ xanh
+            else if (roll < 52) Blit(b, 116, 14, 6, 7, ox + 5, oy + 7);  // bài kiểm tra + bút
+        }
+
+        /// <summary>Bàn học sinh đôi (32x19) kèm 2 ghế học sinh từ bộ horror_school_furnitures.</summary>
+        public static void DoubleDesk(PixelBuffer b, int tx, int ty, System.Random rng)
+        {
+            int ox = tx * T, oy = ty * T;
+            PaintStudentChair(b, ox, oy, rng);
+            PaintStudentChair(b, ox + T, oy, rng);
+
+            int kind = rng.Next(100);
+            if (kind < 14) // bàn gãy đôi thành 2 nửa
+            {
+                Blit(b, 224, 93, 20, 19, ox, oy - 2);
+                Blit(b, 271, 93, 17, 19, ox + 15, oy - 2);
+            }
+            else if (kind < 38) // bàn sứt mẻ góc phải
+                Blit(b, 224, 61, 32, 19, ox, oy - 2);
+            else if (kind < 65) // bàn bị khắc chữ / vết bẩn
+                Blit(b, 256, 45, 32, 19, ox, oy - 2);
+            else if (kind < 82)
+                Blit(b, 256, 13, 32, 19, ox, oy - 2);
+            else
+                Blit(b, 224, 13, 32, 19, ox, oy - 2);
+
+            if (kind >= 14)
+            {
+                PaintDeskBook(b, ox, oy, rng);
+                PaintDeskBook(b, ox + T, oy, rng);
+            }
+            // Một số chỗ có thêm ghế quay lưng phía nam bàn
+            if (rng.Next(100) < 25)
+                Blit(b, 241, 119, 14, 25, ox + (rng.Next(2) * T) + 1, oy - 6);
+        }
+
+        /// <summary>Bàn học sinh đơn (16x19) kèm ghế học sinh.</summary>
+        public static void SingleDesk(PixelBuffer b, int tx, int ty, System.Random rng)
+        {
+            int ox = tx * T, oy = ty * T;
+            PaintStudentChair(b, ox, oy, rng);
+            if (rng.Next(2) == 0) Blit(b, 320, 13, 16, 19, ox, oy - 2);
+            else Blit(b, 320, 61, 16, 19, ox, oy - 2);
+            PaintDeskBook(b, ox, oy, rng);
+        }
+
+        /// <summary>Bàn giáo viên kèm ghế xoay văn phòng màu đen và sổ sách trên mặt bàn.</summary>
         public static void TeacherDesk(PixelBuffer b, int tx, int ty)
         {
             int ox = tx * T, oy = ty * T;
-            for (int lx = 1; lx <= 14; lx++) b.Darken(ox + lx, oy + 2, 0.55f);
-            b.Fill(ox + 1, oy + 3, 14, 10, Palette.Desk);
-            b.Fill(ox + 1, oy + 12, 14, 1, Palette.DeskLight);
-            b.Fill(ox + 1, oy + 3, 14, 2, Palette.DeskDark);
-            b.Fill(ox + 4, oy + 7, 4, 3, Palette.Paper);
-            b.Set(ox + 10, oy + 9, Palette.Brass);
+            // Ghế xoay giáo viên nhìn nghiêng đặt bên trái (phía bục giảng)
+            Blit(b, 179, 67, 13, 24, ox - 11, oy - 3);
+            // Bàn gỗ giáo viên đặt dọc (12x32)
+            Blit(b, 180, 0, 12, 32, ox + 2, oy - 8);
+            // Quyển sổ mở trên bàn giáo viên
+            Blit(b, 144, 15, 13, 7, ox + 1, oy + 4);
+        }
+
+        /// <summary>Trang trí nội thất lớp học (tủ sách, kệ gỗ, bản đồ treo tường) ở các ô tường/góc trống.</summary>
+        public static void ClassroomDecor(PixelBuffer b, RectInt room, bool frontIsNorth, int roomIndex, System.Random rng)
+        {
+            // Bản đồ thế giới (nguyên hoặc rách) treo trên mặt tường phía bắc của lớp (nếu tường bắc là tường kín)
+            if (!frontIsNorth)
+            {
+                int mapX = (room.xMin + 4) * T;
+                int mapY = (room.yMax) * T;
+                if (rng.Next(2) == 0) Blit(b, 96, 81, 25, 16, mapX, mapY);
+                else Blit(b, 96, 65, 32, 16, mapX, mapY);
+            }
+            // Kệ gỗ thấp / sách vở sát góc đông-bắc hoặc đông-nam không vướng cửa
+            int cornerX = (room.xMax - 2) * T;
+            int cornerY = (frontIsNorth ? room.yMin : room.yMax - 1) * T;
+            Blit(b, 36, 152, 11, 6, cornerX + 2, cornerY + 2); // sách rơi trên sàn góc lớp
+            if (roomIndex % 2 == 0)
+                Blit(b, 65, 150, 12, 9, cornerX + 14, cornerY + 4);
+        }
+
+        /// <summary>Đổ bóng pixel 3D dưới chân và cạnh bên phải của tủ locker / máy bán nước.</summary>
+        static void PaintPropShadow(PixelBuffer b, int ox, int oy, int w, int h)
+        {
+            // Bóng đổ chéo sang phải và xuống dưới mặt sàn tạo chiều sâu 3D
+            for (int dy = -4; dy < 6; dy++)
+            {
+                float factor = dy < 0 ? 0.42f + (dy + 4) * 0.06f : 0.48f;
+                int shiftRight = dy < 0 ? (-dy) / 2 : 3;
+                for (int dx = -1; dx < w + shiftRight; dx++)
+                    b.Darken(ox + dx, oy + dy, factor);
+            }
+            // Bóng cạnh bên phải dọc thân tủ
+            for (int dy = 0; dy < h - 8; dy++)
+            {
+                b.Darken(ox + w, oy + dy, 0.46f);
+                b.Darken(ox + w + 1, oy + dy, 0.65f);
+                if (dy < h - 14) b.Darken(ox + w + 2, oy + dy, 0.80f);
+            }
+        }
+
+        static void PlaceCorridorCabinet(PixelBuffer b, int srcX, int srcYTop, int w, int h, int dstX, int dstY)
+        {
+            PaintPropShadow(b, dstX, dstY, w, h);
+            Blit(b, srcX, srcYTop, w, h, dstX, dstY);
+        }
+
+        /// <summary>Trang trí hành lang từ corridor school.png: tủ locker, máy bán nước, bình cứu hỏa, biển EXIT, biển lớp.</summary>
+        public static void CorridorDecor(PixelBuffer b, SchoolMap map, System.Random rng)
+        {
+            // Biển EXIT xanh lá cạnh cổng thoát hiểm (29..30, 38)
+            Blit(b, 32, 276, 16, 7, 28 * T, 38 * T + 5);
+            Blit(b, 32, 276, 16, 7, 31 * T, 38 * T + 5);
+
+            // Dọc bức tường phía bắc của hành lang B (y = 37..38): đặt dãy tủ locker và máy bán hàng tự động
+            int[] lockerColsB = { 5, 8, 12, 18, 22, 35, 39, 45, 50, 54 };
+            for (int i = 0; i < lockerColsB.Length; i++)
+            {
+                int tx = lockerColsB[i];
+                int ox = tx * T, oy = 37 * T + 4;
+                if (i == 0) PlaceCorridorCabinet(b, 0, 264, 26, 40, ox + 3, oy - 2);         // máy bán nước đỏ
+                else if (i == 6) PlaceCorridorCabinet(b, 0, 312, 26, 40, ox + 3, oy - 2);    // máy bán nước xanh
+                else if (i == 3 || i == 8) PlaceCorridorCabinet(b, 32, 313, 32, 39, ox, oy); // tủ locker 4 ngăn xám
+                else if (i == 4) PlaceCorridorCabinet(b, 160, 313, 16, 39, ox, oy);          // tủ locker mở có xác học sinh
+                else if (i == 2) PlaceCorridorCabinet(b, 128, 313, 16, 39, ox, oy);          // tủ đỏ mở hé
+                else if (i == 7) PlaceCorridorCabinet(b, 144, 313, 16, 39, ox, oy);          // tủ vàng mở hé
+                else
+                {
+                    PaintPropShadow(b, ox, oy, 32, 39);
+                    Blit(b, 64, 265, 16, 39, ox, oy);                                        // tủ đỏ đóng
+                    Blit(b, 80, 265, 16, 39, ox + T, oy);                                    // tủ vàng đóng
+                }
+            }
+
+            // Bình chữa cháy + biển báo và biển tên lớp (A1..A3, B1..B3) trên mặt tường hành lang
+            int[] roomCols = { 5, 17, 33, 45 };
+            for (int i = 0; i < roomCols.Length; i++)
+            {
+                int x0 = roomCols[i];
+                // Tường mặt nam của dãy phòng giữa (y = 15, nhìn ra hành lang A)
+                int signCol = (i % 3);
+                Blit(b, 65 + signCol * 16, 195, 14, 10, (x0 + 2) * T + 1, 15 * T + 4); // biển A1, A2, A3
+                Blit(b, 50, 273, 11, 14, (x0 + 8) * T + 2, 15 * T + 2);                // bình chữa cháy
+                PlaceCorridorCabinet(b, 160, 265, 16, 39, x0 * T, 14 * T + 4);         // tủ locker xám đầu phòng
+
+                // Tường mặt nam của dãy phòng trên (y = 26, nhìn ra hành lang giữa)
+                Blit(b, 65 + signCol * 16, 211, 14, 10, (x0 + 2) * T + 1, 26 * T + 4); // biển B1, B2, B3
+                if (i % 2 == 1)
+                    PlaceCorridorCabinet(b, 192, 313, 16, 39, (x0 + 10) * T, 25 * T + 4); // tủ locker mở trống
+            }
         }
 
         /// <summary>Đổ bóng chân tường (ambient occlusion) lên ô sàn nằm sát tường.</summary>

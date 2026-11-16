@@ -21,7 +21,7 @@ namespace SchoolHorror
         {
             ForEachTile(PaintBase);
             ForEachTile(PaintShadowsAndLitter);
-            ForEachTile(PaintFurniture);
+            PaintDecorAndFurniture();
             return buffer.ToSprite(Vector2.zero);
         }
 
@@ -37,6 +37,7 @@ namespace SchoolHorror
             switch (map.Get(x, y))
             {
                 case TileType.CorridorFloor:
+                case TileType.CorridorProp:
                     TilePainter.CorridorFloor(buffer, x, y, rng);
                     break;
                 case TileType.RoomFloor:
@@ -84,10 +85,27 @@ namespace SchoolHorror
             if (plainFloor && rng.NextDouble() < 0.09) TilePainter.Paper(buffer, x, y, rng);
         }
 
+        void PaintDecorAndFurniture()
+        {
+            for (int i = 0; i < map.Rooms.Count; i++)
+            {
+                RectInt room = map.Rooms[i];
+                bool frontIsNorth = room.yMin == 4 || room.yMin == 27;
+                TilePainter.ClassroomDecor(buffer, room, frontIsNorth, i, rng);
+            }
+            TilePainter.CorridorDecor(buffer, map, rng);
+            ForEachTile(PaintFurniture);
+        }
+
         void PaintFurniture(int x, int y)
         {
             TileType type = map.Get(x, y);
-            if (type == TileType.Desk) TilePainter.Desk(buffer, x, y);
+            if (type == TileType.Desk)
+            {
+                if (map.Get(x - 1, y) == TileType.Desk) return; // đã vẽ cùng nửa trái của bàn đôi
+                if (map.Get(x + 1, y) == TileType.Desk) TilePainter.DoubleDesk(buffer, x, y, rng);
+                else TilePainter.SingleDesk(buffer, x, y, rng);
+            }
             else if (type == TileType.TeacherDesk) TilePainter.TeacherDesk(buffer, x, y);
         }
     }

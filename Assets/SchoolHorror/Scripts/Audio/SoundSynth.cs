@@ -95,6 +95,22 @@ namespace SchoolHorror
             return Create("Click", d);
         }
 
+        /// <summary>Tiếng chớp mắt: âm trầm mềm kèm tiếng sột nhẹ của mí mắt khép lại.</summary>
+        public static AudioClip Blink(System.Random rng)
+        {
+            float[] d = Buffer(0.11f);
+            float low = 0f;
+            for (int i = 0; i < d.Length; i++)
+            {
+                float t = (float)i / Rate;
+                low += (Noise(rng) - low) * 0.12f;
+                float thud = Mathf.Sin(Tau * (135f - 650f * t) * t) * Mathf.Exp(-t * 42f);
+                float brush = low * Mathf.Exp(-t * 55f);
+                d[i] = (thud * 0.55f + brush * 0.45f) * 0.8f;
+            }
+            return Create("Blink", d);
+        }
+
         /// <summary>Lay tay nắm cửa/cổng đang khóa.</summary>
         public static AudioClip Rattle(System.Random rng)
         {

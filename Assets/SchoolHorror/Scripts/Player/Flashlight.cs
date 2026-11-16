@@ -9,7 +9,7 @@ namespace SchoolHorror
         public float Battery { get; private set; } = 1f;
         public Vector2 AimDirection { get; private set; } = Vector2.right;
         public Vector2 Origin => (Vector2)transform.position + new Vector2(0f, 0.25f);
-        public bool IsOn => Battery > 0f;
+        public bool IsOn => switchedOn && Battery > 0f;
         /// <summary>Pin khỏe thì chùm sáng vươn tới bức tường xa nhất; pin yếu thì ngắn dần.</summary>
         public float Range => Mathf.Lerp(GameConfig.FlashlightLowRange, GameConfig.FlashlightRange, Power);
         public float Intensity => Mathf.Lerp(0.45f, 1f, Power) * flicker;
@@ -23,24 +23,34 @@ namespace SchoolHorror
         SchoolMap map;
         Camera cam;
         GameManager game;
+        AudioManager sound;
+        bool switchedOn = true;
         float flicker = 1f;
 
-        public void Init(SchoolMap schoolMap, Camera camera, GameManager gameManager)
+        public void Init(SchoolMap schoolMap, Camera camera, GameManager gameManager, AudioManager audioManager)
         {
             map = schoolMap;
             cam = camera;
             game = gameManager;
+            sound = audioManager;
         }
 
         void Update()
         {
             if (!game.IsPlaying) return;
 
-            Battery = Mathf.Max(0f, Battery - GameConfig.BatteryDrainPerSec * Time.deltaTime);
+            Mouse mouse = Mouse.current;
+            if (mouse != null && mouse.leftButton.wasPressedThisFrame)
+            {
+                switchedOn = !switchedOn;
+                if (sound != null) sound.PlayClick();
+            }
+
+            if (IsOn)
+                Battery = Mathf.Max(0f, Battery - GameConfig.BatteryDrainPerSec * Time.deltaTime);
             bool low = Battery < GameConfig.BatteryLowThreshold;
             flicker = low ? 0.8f + 0.2f * Mathf.PerlinNoise(Time.time * 12f, 0f) : 1f;
 
-            Mouse mouse = Mouse.current;
             if (mouse == null) return;
             Vector3 screen = mouse.position.ReadValue();
             screen.z = -cam.transform.position.z;

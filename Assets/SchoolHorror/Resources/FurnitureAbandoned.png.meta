@@ -1,0 +1,2017 @@
+fileFormatVersion: 2
+guid: c674152ddd89ae9429d210e3d90c1dc4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2286214725025614875
+    second: FurnitureAbandoned_0
+  - first:
+      213: 272603941312819101
+    second: FurnitureAbandoned_1
+  - first:
+      213: 6821967386738817497
+    second: FurnitureAbandoned_2
+  - first:
+      213: -95408566198116429
+    second: FurnitureAbandoned_3
+  - first:
+      213: 3726661967801360152
+    second: FurnitureAbandoned_4
+  - first:
+      213: -1310125033685087577
+    second: FurnitureAbandoned_5
+  - first:
+      213: 5352229227863286517
+    second: FurnitureAbandoned_6
+  - first:
+      213: 8112613423141201464
+    second: FurnitureAbandoned_7
+  - first:
+      213: 3388053241506803915
+    second: FurnitureAbandoned_8
+  - first:
+      213: 744185521644949726
+    second: FurnitureAbandoned_9
+  - first:
+      213: 263571213460357080
+    second: FurnitureAbandoned_10
+  - first:
+      213: -8907678961875033351
+    second: FurnitureAbandoned_11
+  - first:
+      213: 8882316871130716559
+    second: FurnitureAbandoned_12
+  - first:
+      213: -4158861959999256493
+    second: FurnitureAbandoned_13
+  - first:
+      213: 7475133981466873512
+    second: FurnitureAbandoned_14
+  - first:
+      213: -2600571378537563873
+    second: FurnitureAbandoned_15
+  - first:
+      213: 6122925312584016761
+    second: FurnitureAbandoned_16
+  - first:
+      213: -2758607728895003668
+    second: FurnitureAbandoned_17
+  - first:
+      213: 8231103290249633661
+    second: FurnitureAbandoned_18
+  - first:
+      213: 840581208238628286
+    second: FurnitureAbandoned_19
+  - first:
+      213: 176331604699615752
+    second: FurnitureAbandoned_20
+  - first:
+      213: 6826424993319692294
+    second: FurnitureAbandoned_21
+  - first:
+      213: 174876835274123988
+    second: FurnitureAbandoned_22
+  - first:
+      213: 349305706591374200
+    second: FurnitureAbandoned_23
+  - first:
+      213: -1354314673634509147
+    second: FurnitureAbandoned_24
+  - first:
+      213: -6364262849429095668
+    second: FurnitureAbandoned_25
+  - first:
+      213: -3295618296170522843
+    second: FurnitureAbandoned_26
+  - first:
+      213: 7013229553156304540
+    second: FurnitureAbandoned_27
+  - first:
+      213: 5106195400318061669
+    second: FurnitureAbandoned_28
+  - first:
+      213: 2214125614914070709
+    second: FurnitureAbandoned_29
+  - first:
+      213: 1992952855915389959
+    second: FurnitureAbandoned_30
+  - first:
+      213: 6726333320486716403
+    second: FurnitureAbandoned_31
+  - first:
+      213: 4987998495763410938
+    second: FurnitureAbandoned_32
+  - first:
+      213: -3870491684580741771
+    second: FurnitureAbandoned_33
+  - first:
+      213: 730106188948105551
+    second: FurnitureAbandoned_34
+  - first:
+      213: -596655392717251852
+    second: FurnitureAbandoned_35
+  - first:
+      213: 3375768692613850124
+    second: FurnitureAbandoned_36
+  - first:
+      213: -3201990961621853402
+    second: FurnitureAbandoned_37
+  - first:
+      213: 1945610858689308745
+    second: FurnitureAbandoned_38
+  - first:
+      213: -8935459220063135179
+    second: FurnitureAbandoned_39
+  - first:
+      213: 5228593792008207145
+    second: FurnitureAbandoned_40
+  - first:
+      213: 7812358870916100902
+    second: FurnitureAbandoned_41
+  - first:
+      213: 8037724103286903968
+    second: FurnitureAbandoned_42
+  - first:
+      213: -2294113152073274295
+    second: FurnitureAbandoned_43
+  - first:
+      213: -1681660043114748868
+    second: FurnitureAbandoned_44
+  - first:
+      213: 156536575563785182
+    second: FurnitureAbandoned_45
+  - first:
+      213: -2923333471947603636
+    second: FurnitureAbandoned_46
+  - first:
+      213: -6736101986996752381
+    second: FurnitureAbandoned_47
+  - first:
+      213: -2311186047662075909
+    second: FurnitureAbandoned_48
+  - first:
+      213: -3578347483728252711
+    second: FurnitureAbandoned_49
+  - first:
+      213: 3445964084744217248
+    second: FurnitureAbandoned_50
+  - first:
+      213: -8112775774649550720
+    second: FurnitureAbandoned_51
+  - first:
+      213: -2164519286918591309
+    second: FurnitureAbandoned_52
+  - first:
+      213: -4599177603656438576
+    second: FurnitureAbandoned_53
+  - first:
+      213: 5419015146066986505
+    second: FurnitureAbandoned_54
+  - first:
+      213: 8400966476840253637
+    second: FurnitureAbandoned_55
+  - first:
+      213: 7373058418360672946
+    second: FurnitureAbandoned_56
+  - first:
+      213: -4758171361928150671
+    second: FurnitureAbandoned_57
+  - first:
+      213: 3973369978824087523
+    second: FurnitureAbandoned_58
+  - first:
+      213: -1131274183927739145
+    second: FurnitureAbandoned_59
+  - first:
+      213: 4649513189283113768
+    second: FurnitureAbandoned_60
+  - first:
+      213: 1912075163989870303
+    second: FurnitureAbandoned_61
+  - first:
+      213: -3793935047006035091
+    second: FurnitureAbandoned_62
+  - first:
+      213: -209601444803834645
+    second: FurnitureAbandoned_63
+  - first:
+      213: 1976194821464511228
+    second: FurnitureAbandoned_64
+  - first:
+      213: -8533028485688089500
+    second: FurnitureAbandoned_65
+  - first:
+      213: -4049162541802208309
+    second: FurnitureAbandoned_66
+  - first:
+      213: -7438635709547772739
+    second: FurnitureAbandoned_67
+  - first:
+      213: -7361056992203032587
+    second: FurnitureAbandoned_68
+  - first:
+      213: -3137055427334548379
+    second: FurnitureAbandoned_69
+  - first:
+      213: 4664536669151078687
+    second: FurnitureAbandoned_70
+  - first:
+      213: -4406358417847984672
+    second: FurnitureAbandoned_71
+  - first:
+      213: 2058895772628713503
+    second: FurnitureAbandoned_72
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FurnitureAbandoned_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 367
+        width: 129
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1c4b65fd244abf10800000000000000
+      internalID: 2286214725025614875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_1
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 489
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9f625e17db78c300800000000000000
+      internalID: 272603941312819101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_2
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 489
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d9fdd3a13f7cae50800000000000000
+      internalID: 6821967386738817497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_3
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 491
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bf5b3f1a6a0daef0800000000000000
+      internalID: -95408566198116429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_4
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 479
+        width: 14
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81f12c4a053c7b330800000000000000
+      internalID: 3726661967801360152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_5
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 479
+        width: 66
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aa8ad3293081dde0800000000000000
+      internalID: -1310125033685087577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_6
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 468
+        width: 13
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f2214b1020f64a40800000000000000
+      internalID: 5352229227863286517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_7
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 479
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 836a5660deac59070800000000000000
+      internalID: 8112613423141201464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_8
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 479
+        width: 50
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc0bf14f878c40f20800000000000000
+      internalID: 3388053241506803915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_9
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 479
+        width: 17
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed0d2a00ac0e35a00800000000000000
+      internalID: 744185521644949726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_10
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 447
+        width: 66
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dfb2574f9468a300800000000000000
+      internalID: 263571213460357080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_11
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 447
+        width: 22
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f2e738dd21916480800000000000000
+      internalID: -8907678961875033351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_12
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 416
+        width: 44
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f89943e3224544b70800000000000000
+      internalID: 8882316871130716559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_13
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 447
+        width: 34
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3580c5cf411c846c0800000000000000
+      internalID: -4158861959999256493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_14
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 420
+        width: 13
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aec8cd40c20db760800000000000000
+      internalID: 7475133981466873512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_15
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 431
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1978311c1ae8ebd0800000000000000
+      internalID: -2600571378537563873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_16
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 420
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97361d2912009f450800000000000000
+      internalID: 6122925312584016761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_17
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 415
+        width: 19
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce3f094e2e477b9d0800000000000000
+      internalID: -2758607728895003668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_18
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 399
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7fd0ec05d0ca3270800000000000000
+      internalID: 8231103290249633661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_19
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 399
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebd9ee1c7285aab00800000000000000
+      internalID: 840581208238628286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_20
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 383
+        width: 98
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8029bc409a4727200800000000000000
+      internalID: 176331604699615752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_21
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 319
+        width: 64
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6082bac0d555cbe50800000000000000
+      internalID: 6826424993319692294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_22
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 367
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4da65fd1e894d6200800000000000000
+      internalID: 174876835274123988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_23
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 367
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87b456f70bbf8d400800000000000000
+      internalID: 349305706591374200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_24
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 376
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ae7ae3daf1843de0800000000000000
+      internalID: -1354314673634509147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_25
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 367
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0b309268a89da7a0800000000000000
+      internalID: -6364262849429095668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_26
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 376
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5275a7dde9c9342d0800000000000000
+      internalID: -3295618296170522843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 287
+        width: 49
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9e2724fe1ff35160800000000000000
+      internalID: 7013229553156304540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_28
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 353
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56c01bda9a9dcd640800000000000000
+      internalID: 5106195400318061669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_29
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 353
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b8eb0d04872abe10800000000000000
+      internalID: 2214125614914070709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_30
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 352
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 704efe6301468ab10800000000000000
+      internalID: 1992952855915389959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_31
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 353
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f30c70748cb85d50800000000000000
+      internalID: 6726333320486716403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_32
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 353
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aff2920543ee83540800000000000000
+      internalID: 4987998495763410938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_33
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 352
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57d2672d150494ac0800000000000000
+      internalID: -3870491684580741771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_34
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 351
+        width: 34
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f49e098e5bbd12a00800000000000000
+      internalID: 730106188948105551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_35
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 353
+        width: 13
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fa54cfd41148b7f0800000000000000
+      internalID: -596655392717251852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_36
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 349
+        width: 21
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0422278db329de20800000000000000
+      internalID: 3375768692613850124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_37
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 349
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62b948e6f2e3093d0800000000000000
+      internalID: -3201990961621853402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_38
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 320
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 948a15784c2300b10800000000000000
+      internalID: 1945610858689308745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_39
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 344
+        width: 20
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53ad5237e2fdef380800000000000000
+      internalID: -8935459220063135179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_40
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 344
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92b367ff952bf8840800000000000000
+      internalID: 5228593792008207145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_41
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 337
+        width: 40
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62373de50031b6c60800000000000000
+      internalID: 7812358870916100902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_42
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 342
+        width: 27
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a4d20b7c7bbb8f60800000000000000
+      internalID: 8037724103286903968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_43
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 328
+        width: 24
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94cee103e3ca920e0800000000000000
+      internalID: -2294113152073274295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_44
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 328
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c346d21c91b89a8e0800000000000000
+      internalID: -1681660043114748868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_45
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 329
+        width: 28
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed3e5d4af212c2200800000000000000
+      internalID: 156536575563785182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_46
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 335
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c41cd8c12bb3e67d0800000000000000
+      internalID: -2923333471947603636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_47
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 335
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3007146aeee8482a0800000000000000
+      internalID: -6736101986996752381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_48
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 322
+        width: 28
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bff434be8840defd0800000000000000
+      internalID: -2311186047662075909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_49
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 324
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d0f6752ce7275ec0800000000000000
+      internalID: -3578347483728252711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_50
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 324
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a2eeebd31682df20800000000000000
+      internalID: 3445964084744217248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_51
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 306
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0887e919a61a96f80800000000000000
+      internalID: -8112775774649550720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_52
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 306
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bc4cb93d2516f1e0800000000000000
+      internalID: -2164519286918591309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_53
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 306
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dc202346507c20c0800000000000000
+      internalID: -4599177603656438576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_54
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 271
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 906c8cd6095343b40800000000000000
+      internalID: 5419015146066986505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_55
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 290
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c8370e108a369470800000000000000
+      internalID: 8400966476840253637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_56
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 290
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b2679e319d525660800000000000000
+      internalID: 7373058418360672946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_57
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 290
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17106df2b5497fdb0800000000000000
+      internalID: -4758171361928150671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_58
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 255
+        width: 62
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e7d205a1fe342730800000000000000
+      internalID: 3973369978824087523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_59
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 207
+        width: 27
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fcca6b9f18ec40f0800000000000000
+      internalID: -1131274183927739145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_60
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 228
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82ba6b98c93668040800000000000000
+      internalID: 4649513189283113768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_61
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 224
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd686752b3e098a10800000000000000
+      internalID: 1912075163989870303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_62
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 207
+        width: 34
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d63ec460d2c395bc0800000000000000
+      internalID: -3793935047006035091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_63
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 159
+        width: 14
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bec0f02b898571df0800000000000000
+      internalID: -209601444803834645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_64
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 207
+        width: 45
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf2db5448badc6b10800000000000000
+      internalID: 1976194821464511228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_65
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 207
+        width: 12
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 464a54c5dc7949980800000000000000
+      internalID: -8533028485688089500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_66
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 210
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc3cf022f1c7ec7c0800000000000000
+      internalID: -4049162541802208309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_67
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 207
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db48ed6db38a4c890800000000000000
+      internalID: -7438635709547772739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_68
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 159
+        width: 27
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f735588aa548d990800000000000000
+      internalID: -7361056992203032587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_69
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 159
+        width: 66
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 564530da5b0f674d0800000000000000
+      internalID: -3137055427334548379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_70
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 159
+        width: 50
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f19a8860363cbb040800000000000000
+      internalID: 4664536669151078687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_71
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 160
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ed5e176d5879d2c0800000000000000
+      internalID: -4406358417847984672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FurnitureAbandoned_72
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 159
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f108615fbcaa29c10800000000000000
+      internalID: 2058895772628713503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FurnitureAbandoned_0: 2286214725025614875
+      FurnitureAbandoned_1: 272603941312819101
+      FurnitureAbandoned_10: 263571213460357080
+      FurnitureAbandoned_11: -8907678961875033351
+      FurnitureAbandoned_12: 8882316871130716559
+      FurnitureAbandoned_13: -4158861959999256493
+      FurnitureAbandoned_14: 7475133981466873512
+      FurnitureAbandoned_15: -2600571378537563873
+      FurnitureAbandoned_16: 6122925312584016761
+      FurnitureAbandoned_17: -2758607728895003668
+      FurnitureAbandoned_18: 8231103290249633661
+      FurnitureAbandoned_19: 840581208238628286
+      FurnitureAbandoned_2: 6821967386738817497
+      FurnitureAbandoned_20: 176331604699615752
+      FurnitureAbandoned_21: 6826424993319692294
+      FurnitureAbandoned_22: 174876835274123988
+      FurnitureAbandoned_23: 349305706591374200
+      FurnitureAbandoned_24: -1354314673634509147
+      FurnitureAbandoned_25: -6364262849429095668
+      FurnitureAbandoned_26: -3295618296170522843
+      FurnitureAbandoned_27: 7013229553156304540
+      FurnitureAbandoned_28: 5106195400318061669
+      FurnitureAbandoned_29: 2214125614914070709
+      FurnitureAbandoned_3: -95408566198116429
+      FurnitureAbandoned_30: 1992952855915389959
+      FurnitureAbandoned_31: 6726333320486716403
+      FurnitureAbandoned_32: 4987998495763410938
+      FurnitureAbandoned_33: -3870491684580741771
+      FurnitureAbandoned_34: 730106188948105551
+      FurnitureAbandoned_35: -596655392717251852
+      FurnitureAbandoned_36: 3375768692613850124
+      FurnitureAbandoned_37: -3201990961621853402
+      FurnitureAbandoned_38: 1945610858689308745
+      FurnitureAbandoned_39: -8935459220063135179
+      FurnitureAbandoned_4: 3726661967801360152
+      FurnitureAbandoned_40: 5228593792008207145
+      FurnitureAbandoned_41: 7812358870916100902
+      FurnitureAbandoned_42: 8037724103286903968
+      FurnitureAbandoned_43: -2294113152073274295
+      FurnitureAbandoned_44: -1681660043114748868
+      FurnitureAbandoned_45: 156536575563785182
+      FurnitureAbandoned_46: -2923333471947603636
+      FurnitureAbandoned_47: -6736101986996752381
+      FurnitureAbandoned_48: -2311186047662075909
+      FurnitureAbandoned_49: -3578347483728252711
+      FurnitureAbandoned_5: -1310125033685087577
+      FurnitureAbandoned_50: 3445964084744217248
+      FurnitureAbandoned_51: -8112775774649550720
+      FurnitureAbandoned_52: -2164519286918591309
+      FurnitureAbandoned_53: -4599177603656438576
+      FurnitureAbandoned_54: 5419015146066986505
+      FurnitureAbandoned_55: 8400966476840253637
+      FurnitureAbandoned_56: 7373058418360672946
+      FurnitureAbandoned_57: -4758171361928150671
+      FurnitureAbandoned_58: 3973369978824087523
+      FurnitureAbandoned_59: -1131274183927739145
+      FurnitureAbandoned_6: 5352229227863286517
+      FurnitureAbandoned_60: 4649513189283113768
+      FurnitureAbandoned_61: 1912075163989870303
+      FurnitureAbandoned_62: -3793935047006035091
+      FurnitureAbandoned_63: -209601444803834645
+      FurnitureAbandoned_64: 1976194821464511228
+      FurnitureAbandoned_65: -8533028485688089500
+      FurnitureAbandoned_66: -4049162541802208309
+      FurnitureAbandoned_67: -7438635709547772739
+      FurnitureAbandoned_68: -7361056992203032587
+      FurnitureAbandoned_69: -3137055427334548379
+      FurnitureAbandoned_7: 8112613423141201464
+      FurnitureAbandoned_70: 4664536669151078687
+      FurnitureAbandoned_71: -4406358417847984672
+      FurnitureAbandoned_72: 2058895772628713503
+      FurnitureAbandoned_8: 3388053241506803915
+      FurnitureAbandoned_9: 744185521644949726
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

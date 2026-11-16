@@ -57,8 +57,11 @@ namespace SchoolHorror
 
             IsFrozen = IsObserved();
             graceTimer -= Time.deltaTime;
+            float speed = GameConfig.AngelBaseSpeed + player.Keys * GameConfig.AngelSpeedPerKey;
             bool moved = !IsFrozen && graceTimer <= 0f && Chase(distance);
-            sound.SetScrapeVolume(moved ? Mathf.Clamp01(1f - distance / 14f) : 0f);
+            float proximity = Mathf.Clamp01(1f - distance / 18f);
+            float stepVol = moved ? proximity * (0.25f + 0.75f * proximity) : 0f;
+            sound.SetScrapeVolume(stepVol, speed / GameConfig.AngelBaseSpeed);
 
             if (!IsFrozen && Vector2.Distance(Position, player.Position) < GameConfig.AngelCatchDistance)
                 game.Lose();
@@ -100,7 +103,8 @@ namespace SchoolHorror
                 if (path.Count > 1) target = SchoolMap.TileCenter(path[0]);
             }
 
-            Vector2 next = Vector2.MoveTowards(Position, target, GameConfig.AngelSpeed * Time.deltaTime);
+            float speed = GameConfig.AngelBaseSpeed + player.Keys * GameConfig.AngelSpeedPerKey;
+            Vector2 next = Vector2.MoveTowards(Position, target, speed * Time.deltaTime);
             transform.position = next;
             if (path.Count > 0 && (next - SchoolMap.TileCenter(path[0])).sqrMagnitude < 0.0004f) path.RemoveAt(0);
             return true;

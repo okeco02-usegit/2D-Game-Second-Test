@@ -19,11 +19,16 @@ namespace SchoolHorror
         public float LidAmount { get; private set; }
 
         GameManager game;
+        AudioManager sound;
         float blinkElapsed;
         float blinkDuration;
         float openTime;
 
-        public void Init(GameManager gameManager) => game = gameManager;
+        public void Init(GameManager gameManager, AudioManager audioManager)
+        {
+            game = gameManager;
+            sound = audioManager;
+        }
 
         public static float BlinkDurationFor(float fatigue)
         {
@@ -64,6 +69,7 @@ namespace SchoolHorror
             blinkDuration = duration;
             // Chớp nhanh thì mở mắt ngay; bị phạt 1s/2s thì tối đen rồi mới mở từ từ.
             openTime = duration <= GameConfig.BlinkQuick ? 0.15f : 0.45f;
+            if (sound != null) sound.PlayBlink();
         }
     }
 }

@@ -18,9 +18,10 @@ namespace SchoolHorror
         PlayerInteraction interaction;
 
         UiBar batteryBar, eyeBar, staminaBar;
-        Text keysText, promptText, introText;
+        Text keysText, promptText, introText, warningText;
         EyelidOverlay eyelids;
         EndScreen endScreen;
+        float playStartTime;
 
         public void Init(PlayerController playerController, BlinkSystem blinkSystem, PlayerInteraction playerInteraction, Sprite jumpscareFace)
         {
@@ -43,8 +44,8 @@ namespace SchoolHorror
             UiFactory.Place(keysText.rectTransform, new Vector2(1f, 1f), new Vector2(-20f, -18f), new Vector2(300f, 26f));
 
             Text controls = UiFactory.CreateText(canvas, "Controls", 14, TextAnchor.LowerLeft, new Color(0.7f, 0.68f, 0.78f, 0.9f));
-            controls.text = "WASD: Di chuyển   Shift: Chạy   Chuột: Soi đèn pin   Chuột phải: Chớp mắt   E: Đóng/Mở cửa   F: Khóa cửa";
-            UiFactory.Place(controls.rectTransform, new Vector2(0f, 0f), new Vector2(20f, 14f), new Vector2(900f, 20f));
+            controls.text = "WASD: Di chuyển   Shift: Chạy   Chuột trái: Bật/Tắt đèn   Chuột phải: Chớp mắt   E: Cửa   F: Khóa cửa";
+            UiFactory.Place(controls.rectTransform, new Vector2(0f, 0f), new Vector2(20f, 14f), new Vector2(960f, 20f));
 
             promptText = UiFactory.CreateText(canvas, "Prompt", 20, TextAnchor.MiddleCenter, Color.white);
             UiFactory.Place(promptText.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 70f), new Vector2(900f, 28f));
@@ -53,11 +54,16 @@ namespace SchoolHorror
             introText.text = "Tìm đủ " + GameConfig.KeyCount + " chìa khóa và thoát qua cổng chính.\nĐừng rời mắt khỏi bức tượng.";
             UiFactory.Place(introText.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -110f), new Vector2(900f, 60f));
 
+            warningText = UiFactory.CreateText(canvas, "Angel Warning", 24, TextAnchor.MiddleCenter, Critical);
+            warningText.fontStyle = FontStyle.Bold;
+            UiFactory.Place(warningText.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -110f), new Vector2(900f, 60f));
+
             endScreen = new GameObject("End Screen").AddComponent<EndScreen>();
             endScreen.transform.SetParent(canvas, false);
             endScreen.Init(jumpscareFace);
         }
 
+        public void OnGameStart() => playStartTime = Time.time;
         public void ShowJumpscare() => endScreen.ShowJumpscare();
         public void ShowWin() => endScreen.ShowWin();
 
@@ -79,7 +85,15 @@ namespace SchoolHorror
 
             keysText.text = "CHÌA KHÓA  " + player.Keys + " / " + GameConfig.KeyCount;
             promptText.text = interaction.Prompt;
-            introText.enabled = Time.timeSinceLevelLoad < IntroSeconds;
+            bool warn = player.KeyWarningTimer > 0f;
+            warningText.enabled = warn;
+            if (warn)
+            {
+                float pulse = 0.65f + 0.35f * Mathf.Sin(Time.time * 14f);
+                warningText.color = new Color(1f, 0.22f, 0.2f, pulse);
+                warningText.text = "ĐÃ NHẶT CHÌA KHÓA (" + player.Keys + "/" + GameConfig.KeyCount + ") — TƯỢNG ANGEL ĐANG NHANH HƠN!";
+            }
+            introText.enabled = !warn && (Time.time - playStartTime < IntroSeconds);
             eyelids.SetClosedAmount(blink.LidAmount);
         }
     }

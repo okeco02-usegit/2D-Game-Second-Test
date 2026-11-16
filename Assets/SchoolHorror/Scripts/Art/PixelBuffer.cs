@@ -37,6 +37,39 @@ namespace SchoolHorror
             pixels[y * Width + x] = new Color32((byte)(c.r * factor), (byte)(c.g * factor), (byte)(c.b * factor), c.a);
         }
 
+        /// <summary>Dán một vùng sprite từ atlas (tọa độ gốc trên-trái) vào đệm (tọa độ gốc dưới-trái) có trộn alpha.</summary>
+        public void BlitAtlas(Color32[] atlas, int atlasW, int atlasH, int srcX, int srcYTop, int w, int h, int dstX, int dstYBottom)
+        {
+            if (atlas == null) return;
+            for (int dy = 0; dy < h; dy++)
+            {
+                int py = dstYBottom + dy;
+                if (py < 0 || py >= Height) continue;
+                int imgY = srcYTop + (h - 1 - dy);
+                int texY = atlasH - 1 - imgY;
+                if (texY < 0 || texY >= atlasH) continue;
+                for (int dx = 0; dx < w; dx++)
+                {
+                    int px = dstX + dx;
+                    if (px < 0 || px >= Width) continue;
+                    int sx = srcX + dx;
+                    if (sx < 0 || sx >= atlasW) continue;
+                    Color32 s = atlas[texY * atlasW + sx];
+                    if (s.a == 0) continue;
+                    if (s.a == 255) pixels[py * Width + px] = s;
+                    else
+                    {
+                        Color32 d = pixels[py * Width + px];
+                        int a = s.a, inv = 255 - a;
+                        pixels[py * Width + px] = new Color32(
+                            (byte)((s.r * a + d.r * inv) / 255),
+                            (byte)((s.g * a + d.g * inv) / 255),
+                            (byte)((s.b * a + d.b * inv) / 255), 255);
+                    }
+                }
+            }
+        }
+
         /// <summary>Vẽ từ "tranh ký tự": mỗi chuỗi là một hàng (từ trên xuống), mỗi ký tự tra màu trong bảng.</summary>
         public static PixelBuffer FromArt(string[] rows, System.Func<char, Color32> colorOf)
         {

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace SchoolHorror
 {
-    public enum GameState { Playing, Won, Lost }
+    public enum GameState { Menu, Playing, Won, Lost }
 
     /// <summary>
     /// Điểm khởi đầu của game: dựng toàn bộ thế giới khi vào scene, nối các hệ thống với nhau
@@ -12,7 +12,7 @@ namespace SchoolHorror
     /// </summary>
     public sealed class GameManager : MonoBehaviour
     {
-        public GameState State { get; private set; } = GameState.Playing;
+        public GameState State { get; private set; } = GameState.Menu;
         public bool IsPlaying => State == GameState.Playing;
 
         Camera cam;
@@ -42,9 +42,9 @@ namespace SchoolHorror
             GameObject angelObject = CreateSpriteObject("Angel", sprites.Angel, sprites.UnlitMaterial, 11, map.AngelStart);
             var angel = angelObject.AddComponent<AngelController>();
 
-            flashlight.Init(map, cam, this);
-            blink.Init(this);
-            player.Init(map, this, sound, flashlight, playerObject.GetComponent<SpriteRenderer>());
+            flashlight.Init(map, cam, this, sound);
+            blink.Init(this, sound);
+            player.Init(map, this, sound, flashlight, playerObject.GetComponent<SpriteRenderer>(), sprites);
             interaction.Init(map, this, sound, player, angel);
             lighting.Init(map, cam, flashlight, world.Candles, sprites.UnlitMaterial);
             angel.Init(map, this, sound, player, blink, lighting);
@@ -53,11 +53,23 @@ namespace SchoolHorror
 
             hud = CreateChild("HUD").AddComponent<HudController>();
             hud.Init(player, blink, interaction, sprites.JumpscareFace);
+            hud.gameObject.SetActive(false);
+
+            var menu = CreateChild("MainMenu").AddComponent<MainMenu>();
+            menu.Init(this, sound, sprites);
+        }
+
+        public void StartGame()
+        {
+            if (State != GameState.Menu) return;
+            State = GameState.Playing;
+            hud.gameObject.SetActive(true);
+            hud.OnGameStart();
         }
 
         void Update()
         {
-            if (IsPlaying) return;
+            if (State != GameState.Won && State != GameState.Lost) return;
             Keyboard keyboard = Keyboard.current;
             if (keyboard != null && keyboard.rKey.wasPressedThisFrame)
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -69,7 +81,7 @@ namespace SchoolHorror
             Vector2 p = player.Position;
             cam.transform.position = new Vector3(p.x, p.y + 0.4f, cam.transform.position.z);
             lighting.Render();
-            hud.Refresh();
+            if (hud.gameObject.activeSelf) hud.Refresh();
         }
 
         public void Win()
