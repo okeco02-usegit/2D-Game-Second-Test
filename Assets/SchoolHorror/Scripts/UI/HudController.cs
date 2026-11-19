@@ -36,22 +36,22 @@ namespace SchoolHorror
 
             float quickMark = 1f - GameConfig.FatigueQuickLimit / GameConfig.FatigueMax;
             float mediumMark = 1f - GameConfig.FatigueMediumLimit / GameConfig.FatigueMax;
-            batteryBar = new UiBar(canvas, "PIN", 20f);
-            eyeBar = new UiBar(canvas, "MỎI MẮT", 46f, quickMark, mediumMark);
-            staminaBar = new UiBar(canvas, "THỂ LỰC", 72f);
+            batteryBar = new UiBar(canvas, "BATTERY", 20f);
+            eyeBar = new UiBar(canvas, "FATIGUE", 46f, quickMark, mediumMark);
+            staminaBar = new UiBar(canvas, "STAMINA", 72f);
 
             keysText = UiFactory.CreateText(canvas, "Keys", 20, TextAnchor.MiddleRight, new Color(0.95f, 0.82f, 0.4f));
             UiFactory.Place(keysText.rectTransform, new Vector2(1f, 1f), new Vector2(-20f, -18f), new Vector2(300f, 26f));
 
             Text controls = UiFactory.CreateText(canvas, "Controls", 14, TextAnchor.LowerLeft, new Color(0.7f, 0.68f, 0.78f, 0.9f));
-            controls.text = "WASD: Di chuyển   Shift: Chạy   Chuột trái: Bật/Tắt đèn   Chuột phải: Chớp mắt   E: Cửa   F: Khóa cửa";
+            controls.text = "WASD: Move   Shift: Sprint   Left Click: Flashlight   Right Click: Blink   E: Door   F: Lock Door";
             UiFactory.Place(controls.rectTransform, new Vector2(0f, 0f), new Vector2(20f, 14f), new Vector2(960f, 20f));
 
             promptText = UiFactory.CreateText(canvas, "Prompt", 20, TextAnchor.MiddleCenter, Color.white);
             UiFactory.Place(promptText.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 70f), new Vector2(900f, 28f));
 
             introText = UiFactory.CreateText(canvas, "Intro", 22, TextAnchor.MiddleCenter, new Color(0.9f, 0.88f, 0.95f));
-            introText.text = "Tìm đủ " + GameConfig.KeyCount + " chìa khóa và thoát qua cổng chính.\nĐừng rời mắt khỏi bức tượng.";
+            introText.text = "Find all " + GameConfig.KeyCount + " keys and escape through the main gate.\nNever take your eyes off the statue.";
             UiFactory.Place(introText.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -110f), new Vector2(900f, 60f));
 
             warningText = UiFactory.CreateText(canvas, "Angel Warning", 24, TextAnchor.MiddleCenter, Critical);
@@ -83,7 +83,7 @@ namespace SchoolHorror
 
             staminaBar.Set(player.Stamina, player.Stamina < GameConfig.StaminaMinToRun ? Critical : StaminaColor);
 
-            keysText.text = "CHÌA KHÓA  " + player.Keys + " / " + GameConfig.KeyCount;
+            keysText.text = "KEYS  " + player.Keys + " / " + GameConfig.KeyCount;
             promptText.text = interaction.Prompt;
             bool warn = player.KeyWarningTimer > 0f;
             warningText.enabled = warn;
@@ -91,7 +91,7 @@ namespace SchoolHorror
             {
                 float pulse = 0.65f + 0.35f * Mathf.Sin(Time.time * 14f);
                 warningText.color = new Color(1f, 0.22f, 0.2f, pulse);
-                warningText.text = "ĐÃ NHẶT CHÌA KHÓA (" + player.Keys + "/" + GameConfig.KeyCount + ") — TƯỢNG ANGEL ĐANG NHANH HƠN!";
+                warningText.text = "KEY COLLECTED (" + player.Keys + "/" + GameConfig.KeyCount + ") — THE ANGEL IS GETTING FASTER!";
             }
             introText.enabled = !warn && (Time.time - playStartTime < IntroSeconds);
             eyelids.SetClosedAmount(blink.LidAmount);

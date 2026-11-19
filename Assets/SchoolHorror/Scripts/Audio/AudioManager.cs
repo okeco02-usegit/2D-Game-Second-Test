@@ -10,9 +10,11 @@ namespace SchoolHorror
         AudioSource ambient;
         AudioSource bgm;
         AudioSource footstepSource;
+        AudioSource windowWindSource;
 
         AudioClip footstepFallback, bang, heartbeat, pickup, keyPickupClip, click, blink, rattle, creakFallback, jumpscare, winChime;
         AudioClip[] woodenSteps, stairsSteps, concreteSteps, creakingDoors, monsterGrowls, ambientWinds;
+        AudioClip doorKnockingQuiet, doorSqueeky2, doorHandleJiggle, creepyWindHowl, woodenStep3;
 
         readonly System.Random rng = new System.Random(1234);
         static bool musicOn = true;
@@ -24,6 +26,8 @@ namespace SchoolHorror
         float danger;
         float heartTimer;
         int currentSurface = -1;
+        float windowWindPlayTimer;
+        float windowWindTargetVol;
 
         void Awake()
         {
@@ -47,6 +51,12 @@ namespace SchoolHorror
             ambientWinds = Resources.LoadAll<AudioClip>("Audio/AmbientWind");
             AudioClip bgmClip = Resources.Load<AudioClip>("Audio/BGM");
 
+            doorKnockingQuiet = Resources.Load<AudioClip>("Audio/DoorKnockingQuiet");
+            doorSqueeky2 = Resources.Load<AudioClip>("Audio/DoorSqueeky2");
+            doorHandleJiggle = Resources.Load<AudioClip>("Audio/DoorHandleJiggle");
+            creepyWindHowl = Resources.Load<AudioClip>("Audio/CreepyWindHowl");
+            woodenStep3 = Resources.Load<AudioClip>("Audio/WoodenFootsteps/Wooden Foosteps (3)");
+
             effects = gameObject.AddComponent<AudioSource>();
             AudioClip angelStep = Resources.Load<AudioClip>("Audio/AngelFootstep") ?? SoundSynth.StoneScrape(rng);
             scrape = CreateLoop(angelStep, 0f);
@@ -60,6 +70,10 @@ namespace SchoolHorror
             footstepSource = gameObject.AddComponent<AudioSource>();
             footstepSource.loop = true;
             footstepSource.playOnAwake = false;
+
+            windowWindSource = gameObject.AddComponent<AudioSource>();
+            windowWindSource.playOnAwake = false;
+
             ApplyMuteState();
         }
 
@@ -82,6 +96,7 @@ namespace SchoolHorror
             if (effects != null) effects.mute = !sfxOn;
             if (scrape != null) scrape.mute = !sfxOn;
             if (footstepSource != null) footstepSource.mute = !sfxOn;
+            if (windowWindSource != null) windowWindSource.mute = !sfxOn;
         }
 
         AudioClip Pick(AudioClip[] clips)
@@ -140,6 +155,15 @@ namespace SchoolHorror
         {
             scrape.volume = Mathf.MoveTowards(scrape.volume, scrapeTarget, Time.deltaTime * 8f);
 
+            if (windowWindPlayTimer > 0f)
+            {
+                windowWindPlayTimer -= Time.deltaTime;
+                if (windowWindPlayTimer <= 0.35f && windowWindSource != null)
+                    windowWindSource.volume = Mathf.Lerp(0f, windowWindTargetVol, windowWindPlayTimer / 0.35f);
+                if (windowWindPlayTimer <= 0f && windowWindSource != null)
+                    windowWindSource.Stop();
+            }
+
             if (danger <= 0f) return;
             heartTimer -= Time.deltaTime;
             if (heartTimer <= 0f)
@@ -160,13 +184,6 @@ namespace SchoolHorror
 
             int surface = (tile == TileType.RoomFloor || tile == TileType.Podium) ? 0
                 : (tile == TileType.Door) ? 1 : 2;
-            AudioClip[] pool = surface == 0 ? woodenSteps : surface == 1 ? stairsSteps : concreteSteps;
-
-            if (pool == null || pool.Length == 0)
-            {
-                effects.PlayOneShot(footstepFallback, 0.3f);
-                return;
-            }
 
             footstepSource.pitch = running ? 1.32f : 1.0f;
             footstepSource.volume = running ? 0.55f : 0.38f;
@@ -174,9 +191,21 @@ namespace SchoolHorror
             if (surface != currentSurface || footstepSource.clip == null)
             {
                 currentSurface = surface;
-                footstepSource.clip = Pick(pool);
-                footstepSource.time = (float)(rng.NextDouble() * Mathf.Max(0.1f, footstepSource.clip.length * 0.5f));
-                footstepSource.Play();
+                if (surface == 0)
+                {
+                    footstepSource.clip = woodenStep3 ?? Pick(woodenSteps);
+                }
+                else
+                {
+                    AudioClip[] pool = surface == 1 ? stairsSteps : concreteSteps;
+                    footstepSource.clip = Pick(pool);
+                }
+
+                if (footstepSource.clip != null)
+                {
+                    footstepSource.time = (float)(rng.NextDouble() * Mathf.Max(0.1f, footstepSource.clip.length * 0.5f));
+                    footstepSource.Play();
+                }
             }
             else if (!footstepSource.isPlaying)
             {
@@ -195,6 +224,23 @@ namespace SchoolHorror
 
         public void PlayFootstep() => effects.PlayOneShot(footstepFallback, 0.3f);
         public void PlayBang(float volume) => effects.PlayOneShot(bang, volume);
+        public void PlayDoorKnock(float volume) => effects.PlayOneShot(doorKnockingQuiet ?? bang, volume);
+        public void PlayDoorHandleJiggle(float volume) => effects.PlayOneShot(doorHandleJiggle ?? rattle, volume);
+        public void PlayDoorSqueak(float volume) => effects.PlayOneShot(doorSqueeky2 ?? creakFallback, volume);
+
+        public void PlayWindowWind(float volume)
+        {
+            if (creepyWindHowl == null || windowWindSource == null) return;
+            if (windowWindPlayTimer > 0f) return;
+            windowWindSource.clip = creepyWindHowl;
+            float maxStart = Mathf.Max(0f, creepyWindHowl.length - 2.5f);
+            windowWindSource.time = (float)(rng.NextDouble() * maxStart);
+            windowWindTargetVol = volume;
+            windowWindSource.volume = volume;
+            windowWindSource.Play();
+            windowWindPlayTimer = 2.0f;
+        }
+
         public void PlayPickup() => effects.PlayOneShot(pickup, 0.7f);
         public void PlayKeyPickup() => effects.PlayOneShot(keyPickupClip, 0.9f);
         public void PlayClick() => effects.PlayOneShot(click, 0.8f);

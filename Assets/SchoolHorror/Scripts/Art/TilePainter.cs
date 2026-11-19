@@ -25,7 +25,7 @@ namespace SchoolHorror
             b.BlitAtlas(atlas, atlasW, atlasH, srcX, srcYTop, w, h, dstX, dstYBottom);
         }
 
-        static Color32 Vary(Color32 c, int amount, System.Random rng)
+        public static Color32 Vary(Color32 c, int amount, System.Random rng)
         {
             int d = rng.Next(-amount, amount + 1);
             return new Color32(Clamp(c.r + d), Clamp(c.g + d), Clamp(c.b + d), 255);
@@ -177,6 +177,15 @@ namespace SchoolHorror
                     Color32 glass = (lx + ly) % 9 == 0 ? Palette.GlassShine : Vary(Palette.Glass, 2, rng);
                     b.Set(ox + lx, oy + ly, frame ? Palette.BoardFrame : glass);
                 }
+        }
+
+        /// <summary>Ô tường ngoài có gắn cửa sổ: vẽ tường bình thường, cảnh Parallax được chiếu qua SpriteMask của cửa sổ.</summary>
+        public static void OuterWindowWall(PixelBuffer b, int tx, int ty, System.Random rng, bool isTopWall, bool leftHalf)
+        {
+            if (isTopWall)
+                WallFace(b, tx, ty, rng);
+            else
+                WallTop(b, tx, ty, rng);
         }
 
         /// <summary>Mảng tường sập: nền gạch vụn, hai bên còn sót mép vữa lởm chởm.</summary>
@@ -359,7 +368,7 @@ namespace SchoolHorror
                 if (i == 0) PlaceCorridorCabinet(b, 0, 264, 26, 40, ox + 3, oy - 2);         // máy bán nước đỏ
                 else if (i == 6) PlaceCorridorCabinet(b, 0, 312, 26, 40, ox + 3, oy - 2);    // máy bán nước xanh
                 else if (i == 3 || i == 8) PlaceCorridorCabinet(b, 32, 313, 32, 39, ox, oy); // tủ locker 4 ngăn xám
-                else if (i == 4) PlaceCorridorCabinet(b, 160, 313, 16, 39, ox, oy);          // tủ locker mở có xác học sinh
+                else if (i == 4) PlaceCorridorCabinet(b, 160, 313, 16, 39, ox, oy);          // tủ locker mở trống có vết máu (không có xác)
                 else if (i == 2) PlaceCorridorCabinet(b, 128, 313, 16, 39, ox, oy);          // tủ đỏ mở hé
                 else if (i == 7) PlaceCorridorCabinet(b, 144, 313, 16, 39, ox, oy);          // tủ vàng mở hé
                 else

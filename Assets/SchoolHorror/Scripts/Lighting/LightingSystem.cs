@@ -92,7 +92,9 @@ namespace SchoolHorror
                 for (int x = 0; x < TextureWidth; x++)
                 {
                     float wx = originX + (x + 0.5f) * pixelSize;
-                    bool opaque = map.IsOpaque(Mathf.FloorToInt(wx), tileY);
+                    int tileX = Mathf.FloorToInt(wx);
+                    bool inBounds = map.InBounds(tileX, tileY);
+                    bool opaque = inBounds && map.IsOpaque(tileX, tileY);
                     float light = 0f;
 
                     float dx = wx - lightPos.x, dy = wy - lightPos.y;
@@ -101,12 +103,14 @@ namespace SchoolHorror
                     float positive = angle < 0f ? angle + TwoPi : angle;
                     int index = (int)(positive * (PlayerRayCount / TwoPi)) % PlayerRayCount;
 
-                    // Chỉ những điểm mắt người chơi nhìn thẳng tới được mới có thể hiện ra: tường và cửa đóng
-                    // che hết phía sau, còn cửa mở / cửa sổ / tường sập thì nhìn xuyên qua được.
-                    // Ô tường được cộng thêm 1 ô để chính mặt tường bị tia chạm vào vẫn hiện lên.
-                    if (d <= playerRays[index] + (opaque ? 1f : 0.02f))
+                    bool isNorthWallZone = (wx >= 0f && wx < map.Width && wy >= 38.0f && wy <= 40.05f);
+                    if (isNorthWallZone) opaque = true;
+
+                    // 1. Ánh sáng từ đèn pin & vầng sáng quanh người chơi
+                    float reachAllowance = isNorthWallZone ? 2.1f : (opaque ? 1.0f : 0.02f);
+                    if (d <= playerRays[index] + reachAllowance)
                     {
-                        if (d < glow) light = (1f - d / glow) * 0.4f;
+                        if (d < glow) light = Mathf.Max(light, (1f - d / glow) * 0.4f);
                         if (beamOn && d < beamRange)
                         {
                             float diff = Mathf.Abs(angle - aim);
@@ -118,9 +122,74 @@ namespace SchoolHorror
                                 light = Mathf.Max(light, beamPower * edge * falloff);
                             }
                         }
-                        // Vùng sáng của nến ở xa cũng chỉ thấy được khi nằm trong tầm mắt.
-                        for (int c = 0; c < visibleCandles.Count; c++)
-                            light = Mathf.Max(light, visibleCandles[c].LightAt(wx, wy, opaque));
+                    }
+
+                    // 2. Vùng sáng nến (hoạt động độc lập, tự tính theo raycast từ vị trí từng cây nến)
+                    for (int c = 0; c < visibleCandles.Count; c++)
+                        light = Mathf.Max(light, visibleCandles[c].LightAt(wx, wy, opaque));
+
+                    // 3. Khung cảnh ngoài trời qua mặt kính cửa sổ
+                    bool inTopWindow = (wy >= 38.28f && wy <= 39.82f) &&
+                        ((wx >= 2.15f && wx <= 3.85f) || (wx >= 25.15f && wx <= 26.85f) || (wx >= 47.15f && wx <= 48.85f));
+                    bool inSideWindow = false;
+                    for (int sw = 0; sw < OutsideScenery.LeftWindowPositions.Length; sw++)
+                    {
+                        float y0 = OutsideScenery.LeftWindowPositions[sw].y;
+                        if (wx >= 0.05f && wx <= 0.85f && wy >= y0 - 0.20f && wy <= y0 + 1.20f) { inSideWindow = true; break; }
+                        float yR = OutsideScenery.RightWindowPositions[sw].y;
+                        if (wx >= map.Width - 0.85f && wx <= map.Width - 0.05f && wy >= yR - 0.20f && wy <= yR + 1.20f) { inSideWindow = true; break; }
+                    }
+                    if (inTopWindow || inSideWindow)
+                        light = Mathf.Max(light, 0.62f);
+
+                    // Ánh trăng dịu rọi qua 3 cửa sổ ở hành lang trên cùng (y=38) xuống nền hành lang B
+                    for (int tw = 0; tw < OutsideScenery.TopWindowPositions.Length; tw++)
+                    {
+                        Vector2 origin = OutsideScenery.TopWindowPositions[tw];
+                        float mx = wx - origin.x, my = origin.y - wy;
+                        if (my >= 0f && my < 3.8f && Mathf.Abs(mx - my * 0.22f) < 0.75f + my * 0.32f)
+                            light = Mathf.Max(light, (1f - my / 3.8f) * 0.52f);
+                    }
+
+                    // Ánh trăng nhẹ từ cửa sổ bên trái (x=0, y=8/20/32) chiếu xiên xuống dưới ~45° tới giữa hành lang
+                    for (int sw = 0; sw < OutsideScenery.LeftWindowPositions.Length; sw++)
+                    {
+                        Vector2 wp = OutsideScenery.LeftWindowPositions[sw];
+                        float lx = wx - 0.05f;
+                        float ly = wy - wp.y;
+                        float S = lx + ly;
+                        if (lx >= 0f && lx <= 2.15f && ly <= 1.25f && S >= -0.20f && S <= 2.05f)
+                        {
+                            float distFade = lx <= 0.80f ? 1.0f : Mathf.Clamp01(1f - (lx - 0.80f) / 1.35f);
+                            distFade = distFade * distFade;
+
+                            float S_center = 0.925f;
+                            float S_half = 1.125f;
+                            float normDist = Mathf.Abs(S - S_center) / S_half;
+                            float edgeFade = Mathf.Clamp01(1f - normDist * normDist);
+
+                            light = Mathf.Max(light, distFade * edgeFade * 0.35f);
+                        }
+                    }
+                    // Ánh trăng nhẹ từ cửa sổ bên phải (x=60, y=8/20/32) chiếu xiên xuống dưới ~45° (mirror)
+                    for (int sw = 0; sw < OutsideScenery.RightWindowPositions.Length; sw++)
+                    {
+                        Vector2 wp = OutsideScenery.RightWindowPositions[sw];
+                        float lx = (map.Width - 0.05f) - wx;
+                        float ly = wy - wp.y;
+                        float S = lx + ly;
+                        if (lx >= 0f && lx <= 2.15f && ly <= 1.25f && S >= -0.20f && S <= 2.05f)
+                        {
+                            float distFade = lx <= 0.80f ? 1.0f : Mathf.Clamp01(1f - (lx - 0.80f) / 1.35f);
+                            distFade = distFade * distFade;
+
+                            float S_center = 0.925f;
+                            float S_half = 1.125f;
+                            float normDist = Mathf.Abs(S - S_center) / S_half;
+                            float edgeFade = Mathf.Clamp01(1f - normDist * normDist);
+
+                            light = Mathf.Max(light, distFade * edgeFade * 0.35f);
+                        }
                     }
 
                     int level = Mathf.RoundToInt((1f - Mathf.Clamp01(light)) * ShadeLevels);

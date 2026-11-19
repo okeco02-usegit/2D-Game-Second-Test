@@ -28,7 +28,7 @@ namespace SchoolHorror
         }
 
         /// <summary>Ghi đường đi (không gồm ô xuất phát) vào result. Trả về false nếu không có đường.</summary>
-        public bool FindPath(Vector2Int start, Vector2Int goal, List<Vector2Int> result)
+        public bool FindPath(Vector2Int start, Vector2Int goal, List<Vector2Int> result, HashSet<Door> blockedDoors = null)
         {
             result.Clear();
             for (int i = 0; i < cost.Length; i++) { cost[i] = float.MaxValue; closed[i] = false; }
@@ -56,7 +56,7 @@ namespace SchoolHorror
                     Vector2Int next = tile + dir;
                     if (!map.InBounds(next.x, next.y) || !map.IsWalkableForAngel(next.x, next.y)) continue;
                     Door door = map.GetDoor(next);
-                    if (door != null && door.IsLocked) continue;
+                    if (door != null && blockedDoors != null && blockedDoors.Contains(door)) continue;
                     int nextIndex = Index(next);
                     if (closed[nextIndex]) continue;
 

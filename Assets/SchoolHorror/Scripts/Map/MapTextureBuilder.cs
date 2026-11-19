@@ -60,8 +60,17 @@ namespace SchoolHorror
                         map.Get(x, y - 1) != TileType.Blackboard, map.Get(x, y + 1) != TileType.Blackboard);
                     break;
                 case TileType.Window:
-                    TilePainter.Window(buffer, x, y, rng,
-                        map.Get(x - 1, y) != TileType.Window, map.Get(x + 1, y) != TileType.Window);
+                    if (x == 0 || x == map.Width - 1 || y == map.Height - 1)
+                    {
+                        bool isTop = y == map.Height - 1;
+                        bool leftHalf = isTop && map.Get(x - 1, y) != TileType.Window;
+                        TilePainter.OuterWindowWall(buffer, x, y, rng, isTop, leftHalf);
+                    }
+                    else
+                    {
+                        TilePainter.Window(buffer, x, y, rng,
+                            map.Get(x - 1, y) != TileType.Window, map.Get(x + 1, y) != TileType.Window);
+                    }
                     break;
                 case TileType.Gate:
                     TilePainter.Gate(buffer, x, y, rng, map.Get(x - 1, y) != TileType.Gate);

@@ -24,6 +24,7 @@ namespace SchoolHorror
         public void Build()
         {
             BuildMapSprite();
+            OutsideScenery.Build(map, sprites.UnlitMaterial, parent, rng);
             BuildDoors();
             BuildCandles();
         }

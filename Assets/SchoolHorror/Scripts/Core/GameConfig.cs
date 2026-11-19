@@ -36,11 +36,12 @@ namespace SchoolHorror
         public const float BlinkLong = 2f;
 
         // Tượng Angel
-        public const float AngelBaseSpeed = 1.85f;
-        public const float AngelSpeedPerKey = 0.42f;
+        public const float AngelBaseSpeed = 2.15f;
+        public const float AngelSpeedPerKey = 0.46f;
         public const float AngelCatchDistance = 0.55f;
         public const float AngelGraceSeconds = 4f;
         public const float ClosedDoorBreakSeconds = 1.5f;
+        public const float DoorLockCheckSeconds = 0.5f; // thời gian Angel thử vặn nắm đấm cửa đang khóa
         public const float LockSeconds = 0.5f; // thời gian khóa / mở khóa một cánh cửa
 
         // Vật phẩm & tương tác

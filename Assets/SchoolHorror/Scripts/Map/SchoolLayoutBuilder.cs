@@ -50,8 +50,27 @@ namespace SchoolHorror
             map.AngelStart = new Vector2Int(58, 36);
 
             AddCorridorProps();
+            AddOuterWindows();
             AddCorridorCandles();
             return map;
+        }
+
+        void AddOuterWindows()
+        {
+            // Tường ngoài hành lang trên cùng (y = 38): chỉ đặt 3 cửa sổ đôi (2 mở, 1 đóng)
+            // - (2..3, 38): open_window góc trên trái (có ánh trăng rọi)
+            // - (25..26, 38): closed_window giữa trái
+            // - (47..48, 38): open_window bên phải
+            int[] topCols = { 2, 3, 25, 26, 47, 48 };
+            foreach (int x in topCols) map.Set(x, 38, TileType.Window);
+
+            // Tường ngoài hành lang trái (x = 0) và phải (x = 60): 3 cửa sổ mỗi bên
+            int[] sideRows = { 8, 20, 32 };
+            foreach (int y in sideRows)
+            {
+                map.Set(0, y, TileType.Window);
+                map.Set(Width - 1, y, TileType.Window);
+            }
         }
 
         void AddCorridorProps()

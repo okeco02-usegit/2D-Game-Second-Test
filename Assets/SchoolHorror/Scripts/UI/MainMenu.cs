@@ -88,7 +88,7 @@ namespace SchoolHorror
             // Tiêu đề trên cùng
             Text title = UiFactory.CreateText(root, "Game Title", 50, TextAnchor.MiddleCenter, new Color(0.88f, 0.18f, 0.18f));
             title.fontStyle = FontStyle.Bold;
-            title.text = "NGÔI TRƯỜNG BỎ HOANG";
+            title.text = "KEEP BLINKING";
             UiFactory.Place(title.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -48f), new Vector2(900f, 60f));
 
             // --- 1. Nhóm trang chính (PLAY / TUTORIAL / SETTINGS / EXIT) ---
@@ -114,13 +114,13 @@ namespace SchoolHorror
 
             Text setHeader = UiFactory.CreateText(setPanel.transform, "Settings Header", 26, TextAnchor.MiddleCenter, new Color(0.92f, 0.85f, 0.82f));
             setHeader.fontStyle = FontStyle.Bold;
-            setHeader.text = "CÀI ĐẶT ÂM THANH";
+            setHeader.text = "AUDIO SETTINGS";
             UiFactory.Place(setHeader.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(10f, 128f), new Vector2(400f, 40f));
 
             musicLabel = AddButton(setPanel.transform, "Music Toggle", blankNormal, blankHover, new Vector2(0f, 42f), new Vector2(310f, 64f), "", 20, OnToggleMusic);
             sfxLabel = AddButton(setPanel.transform, "SFX Toggle", blankNormal, blankHover, new Vector2(0f, -38f), new Vector2(310f, 64f), "", 20, OnToggleSfx);
 
-            AddButton(setPanel.transform, "Back Button", blankNormal, blankHover, new Vector2(0f, -124f), new Vector2(220f, 58f), "QUAY LẠI", 20, ShowMain);
+            AddButton(setPanel.transform, "Back Button", blankNormal, blankHover, new Vector2(0f, -124f), new Vector2(220f, 58f), "BACK", 20, ShowMain);
 
             // --- 3. Nhóm trang hướng dẫn (TUTORIAL 7 BẢNG) ---
             tutorialGroup = new GameObject("Tutorial Group", typeof(RectTransform));
@@ -150,10 +150,10 @@ namespace SchoolHorror
             tutBody.lineSpacing = 1.2f;
             UiFactory.Place(tutBody.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0f, -72f), new Vector2(510f, 96f));
 
-            Text prevTxt = AddButton(tutPanel.transform, "Prev Button", blankNormal, blankHover, new Vector2(-175f, -162f), new Vector2(156f, 52f), "TRƯỚC", 18, OnPrevSlide);
+            Text prevTxt = AddButton(tutPanel.transform, "Prev Button", blankNormal, blankHover, new Vector2(-175f, -162f), new Vector2(156f, 52f), "PREV", 18, OnPrevSlide);
             prevBtnObj = prevTxt.transform.parent.gameObject;
-            AddButton(tutPanel.transform, "Close Tutorial", blankNormal, blankHover, new Vector2(0f, -162f), new Vector2(156f, 52f), "ĐÓNG", 18, ShowMain);
-            nextBtnLabel = AddButton(tutPanel.transform, "Next Button", blankNormal, blankHover, new Vector2(175f, -162f), new Vector2(156f, 52f), "TIẾP >", 18, OnNextSlide);
+            AddButton(tutPanel.transform, "Close Tutorial", blankNormal, blankHover, new Vector2(0f, -162f), new Vector2(156f, 52f), "CLOSE", 18, ShowMain);
+            nextBtnLabel = AddButton(tutPanel.transform, "Next Button", blankNormal, blankHover, new Vector2(175f, -162f), new Vector2(156f, 52f), "NEXT >", 18, OnNextSlide);
 
             RefreshAudioLabels();
             ShowMain();
@@ -226,11 +226,11 @@ namespace SchoolHorror
         {
             slideIndex = Mathf.Clamp(index, 0, slides.Length - 1);
             TutorialSlide s = slides[slideIndex];
-            tutHeader.text = "HƯỚNG DẪN (" + (slideIndex + 1) + "/" + slides.Length + ") — " + s.Title;
+            tutHeader.text = "TUTORIAL (" + (slideIndex + 1) + "/" + slides.Length + ") — " + s.Title;
             tutBody.text = s.Body;
             tutImage.sprite = s.Illustration;
             prevBtnObj.SetActive(slideIndex > 0);
-            nextBtnLabel.text = slideIndex == slides.Length - 1 ? "XONG" : "TIẾP >";
+            nextBtnLabel.text = slideIndex == slides.Length - 1 ? "DONE" : "NEXT >";
         }
 
         void OnToggleMusic()
@@ -249,10 +249,10 @@ namespace SchoolHorror
         {
             bool m = sound.MusicEnabled;
             bool s = sound.SfxEnabled;
-            musicLabel.text = m ? "NHẠC NỀN: BẬT" : "NHẠC NỀN: TẮT";
+            musicLabel.text = m ? "MUSIC: ON" : "MUSIC: OFF";
             musicLabel.color = m ? new Color(0.95f, 0.9f, 0.85f) : new Color(0.55f, 0.5f, 0.52f);
 
-            sfxLabel.text = s ? "HIỆU ỨNG (SFX): BẬT" : "HIỆU ỨNG (SFX): TẮT";
+            sfxLabel.text = s ? "SFX: ON" : "SFX: OFF";
             sfxLabel.color = s ? new Color(0.95f, 0.9f, 0.85f) : new Color(0.55f, 0.5f, 0.52f);
         }
 
@@ -271,44 +271,44 @@ namespace SchoolHorror
             {
                 new TutorialSlide
                 {
-                    Title = "TÌM 5 CHÌA KHÓA",
-                    Body = "Để chiến thắng, hãy tìm đủ 5 chiếc chìa khóa rải rác khắp các phòng học và hành lang rồi mở cổng thoát hiểm chính.",
+                    Title = "FIND 5 KEYS",
+                    Body = "To win, find all 5 keys scattered across classrooms and corridors, then unlock the main exit gate.",
                     Illustration = MakeSlideKeys(sp)
                 },
                 new TutorialSlide
                 {
-                    Title = "TƯỢNG ANGEL TRUY ĐUỔI",
-                    Body = "Bức tượng Angel sẽ luôn săn đuổi bạn trong bóng tối. Hãy chiếu đèn pin nhìn thẳng vào nó — tượng sẽ hóa đá và đứng im!",
+                    Title = "ANGEL PURSUIT",
+                    Body = "The Angel statue relentlessly hunts you in the darkness. Shine your flashlight directly at it — it will freeze into stone!",
                     Illustration = MakeSlideAngel(sp)
                 },
                 new TutorialSlide
                 {
-                    Title = "MỎI MẮT & NHÁY MẮT",
-                    Body = "Nhìn quá lâu sẽ làm mỏi mắt. Ấn [Chuột phải] để chủ động nháy mắt nhanh. Để mỏi mắt càng lâu, thời gian phải nhắm mắt càng dài!",
+                    Title = "EYE STRAIN & BLINKING",
+                    Body = "Staring too long strains your eyes. Press [Right Click] to blink quickly. The longer you strain, the longer you will be forced to close your eyes!",
                     Illustration = MakeSlideBlink()
                 },
                 new TutorialSlide
                 {
-                    Title = "ĐÓNG CỬA [E] & KHÓA CỬA [F]",
-                    Body = "Ấn [E] để đóng/mở cửa. Cửa đóng thường sẽ bị Angel đập phá — hãy đứng gần và giữ [F] để khóa chốt buộc nó phải đi vòng.",
+                    Title = "DOORS [E] & LOCKS [F]",
+                    Body = "Press [E] to open/close doors. Closed doors can be broken by the Angel — stand close and hold [F] to lock them, forcing it to find another path.",
                     Illustration = MakeSlideDoor(sp)
                 },
                 new TutorialSlide
                 {
-                    Title = "CHẠY NƯỚC RÚT [SHIFT]",
-                    Body = "Đè phím [Shift] khi di chuyển để chạy nhanh hơn lúc khẩn cấp. Chú ý thanh Thể lực để tránh bị kiệt sức.",
+                    Title = "SPRINTING [SHIFT]",
+                    Body = "Hold [Shift] while moving to sprint in emergencies. Watch your Stamina bar carefully to avoid exhaustion.",
                     Illustration = MakeSlideRun(sp)
                 },
                 new TutorialSlide
                 {
-                    Title = "ĐÈN PIN & PIN DỰ PHÒNG",
-                    Body = "Ấn [Chuột trái] để bật/tắt đèn pin. Cẩn thận: đèn pin có thể hết pin làm thu hẹp tầm nhìn — hãy nhặt các viên pin rải rác khắp map.",
+                    Title = "FLASHLIGHT & BATTERIES",
+                    Body = "Press [Left Click] to toggle your flashlight. Be careful: low battery narrows your vision — collect spare batteries scattered across the map.",
                     Illustration = MakeSlideBattery(sp)
                 },
                 new TutorialSlide
                 {
                     Title = "GOOD LUCK!",
-                    Body = "Hãy lắng nghe tiếng bước chân, tiếng cửa và nhịp tim của chính mình.\nChúc bạn may mắn sống sót thoát khỏi ngôi trường!",
+                    Body = "Listen closely to footsteps, rattling doors, and your own heartbeat.\nGood luck escaping the abandoned school alive!",
                     Illustration = MakeSlideGoodLuck(sp, uiTex)
                 }
             };

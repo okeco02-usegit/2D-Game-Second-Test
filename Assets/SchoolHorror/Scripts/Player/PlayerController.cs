@@ -23,6 +23,13 @@ namespace SchoolHorror
         bool exhausted;
         float animTimer;
         float timeSinceLastKey;
+        float windowWindTimer = 4f;
+
+        static readonly Vector2[] CorridorWindows = {
+            new Vector2(0.5f, 8.5f), new Vector2(0.5f, 20.5f), new Vector2(0.5f, 32.5f),
+            new Vector2(60.5f, 8.5f), new Vector2(60.5f, 20.5f), new Vector2(60.5f, 32.5f),
+            new Vector2(2.5f, 38.5f), new Vector2(25.5f, 38.5f), new Vector2(47.5f, 38.5f)
+        };
 
         static readonly string[] ArrowArt =
         {
@@ -92,8 +99,35 @@ namespace SchoolHorror
 
             Vector2Int tile = SchoolMap.TileAt(Position);
             sound.UpdateFootsteps(moving, running, map.Get(tile.x, tile.y));
+            UpdateWindowWind();
 
             spriteRenderer.flipX = Flashlight.AimDirection.x < 0f;
+        }
+
+        void UpdateWindowWind()
+        {
+            Vector2 pos = Position;
+            float minDist = float.MaxValue;
+            for (int i = 0; i < CorridorWindows.Length; i++)
+            {
+                float d = Vector2.Distance(pos, CorridorWindows[i]);
+                if (d < minDist) minDist = d;
+            }
+
+            if (minDist <= 3.2f)
+            {
+                windowWindTimer -= Time.deltaTime;
+                if (windowWindTimer <= 0f)
+                {
+                    windowWindTimer = Random.Range(8f, 12f); // tăng tần suất gấp đôi: trung bình cứ ~10 giây phát 1 lần
+                    float vol = Mathf.Clamp01(1f - minDist / 3.5f) * 0.75f;
+                    sound.PlayWindowWind(vol);
+                }
+            }
+            else
+            {
+                if (windowWindTimer < 4f) windowWindTimer = Random.Range(4f, 7f);
+            }
         }
 
         void UpdateStamina(bool running)

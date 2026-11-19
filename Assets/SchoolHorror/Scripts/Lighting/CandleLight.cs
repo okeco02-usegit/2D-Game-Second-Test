@@ -44,7 +44,8 @@ namespace SchoolHorror
             float angle = Mathf.Atan2(dy, dx);
             if (angle < 0f) angle += Mathf.PI * 2f;
             int index = (int)(angle * (RayCount / (Mathf.PI * 2f))) % RayCount;
-            if (d > rays[index] + (opaque ? 1f : 0.02f)) return 0f;
+            float penetration = opaque ? (wy >= 38.0f ? 2.1f : 1f) : 0.02f;
+            if (d > rays[index] + penetration) return 0f;
             return (1f - d / Radius) * Brightness * Flicker;
         }
 

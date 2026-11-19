@@ -57,8 +57,8 @@ namespace SchoolHorror
         {
             bool hasAllKeys = player.Keys >= GameConfig.KeyCount;
             Prompt = hasAllKeys
-                ? "[E] Mở cổng thoát hiểm"
-                : "Cổng bị khóa - cần đủ " + GameConfig.KeyCount + " chìa khóa (" + player.Keys + "/" + GameConfig.KeyCount + ")";
+                ? "[E] Open Exit Gate"
+                : "Gate is locked - need " + GameConfig.KeyCount + " keys (" + player.Keys + "/" + GameConfig.KeyCount + ")";
             if (!pressE) return;
             if (hasAllKeys) game.Win();
             else sound.PlayRattle();
@@ -68,9 +68,9 @@ namespace SchoolHorror
         {
             switch (door.State)
             {
-                case DoorState.Open: Prompt = "[E] Đóng cửa"; break;
-                case DoorState.Closed: Prompt = "[E] Mở cửa     [F] Khóa cửa"; break;
-                default: Prompt = "[F] Mở khóa cửa"; break;
+                case DoorState.Open: Prompt = "[E] Close door"; break;
+                case DoorState.Closed: Prompt = "[E] Open door     [F] Lock door"; break;
+                default: Prompt = "[F] Unlock door"; break;
             }
 
             if (pressE)
@@ -100,7 +100,7 @@ namespace SchoolHorror
                 return;
             }
 
-            Prompt = lockingDoor.IsLocked ? "Đang mở khóa..." : "Đang khóa cửa...";
+            Prompt = lockingDoor.IsLocked ? "Unlocking door..." : "Locking door...";
             lockElapsed += Time.deltaTime;
             if (lockElapsed < GameConfig.LockSeconds) return;
 

@@ -18,6 +18,8 @@ namespace SchoolHorror
         public Vector2 Position => transform.position;
         public Vector2Int Tile => SchoolMap.TileAt(Position);
 
+        enum DoorAction { None, Knocking, JigglingLocked }
+
         SchoolMap map;
         GameManager game;
         AudioManager sound;
@@ -26,11 +28,12 @@ namespace SchoolHorror
         LightingSystem lighting;
         Pathfinder pathfinder;
         readonly List<Vector2Int> path = new List<Vector2Int>();
+        readonly HashSet<Door> knownBlockedDoors = new HashSet<Door>();
         float repathTimer;
         float graceTimer = GameConfig.AngelGraceSeconds;
-        Door bashTarget;
-        float bashElapsed;
-        float bangTimer;
+        Door currentDoorTarget;
+        DoorAction doorAction = DoorAction.None;
+        float doorActionElapsed;
 
         public void Init(SchoolMap schoolMap, GameManager gameManager, AudioManager audioManager,
             PlayerController playerController, BlinkSystem blinkSystem, LightingSystem lightingSystem)
@@ -83,22 +86,22 @@ namespace SchoolHorror
             if (repathTimer <= 0f || path.Count == 0)
             {
                 repathTimer = RepathInterval;
-                if (!pathfinder.FindPath(Tile, SchoolMap.TileAt(player.Position), path)) return false;
+                if (!pathfinder.FindPath(Tile, SchoolMap.TileAt(player.Position), path, knownBlockedDoors)) return false;
             }
 
             Vector2 target = player.Position; // cùng ô hoặc ô cuối: lao thẳng vào người chơi
             if (path.Count > 0)
             {
                 Door door = map.GetDoor(path[0]);
-                if (door != null && door.IsLocked)
-                {
-                    path.Clear(); // cửa vừa bị khóa ngay trước mặt: bỏ đường này, khung hình sau tìm lối vòng
-                    return false;
-                }
                 if (door != null && !door.IsOpen)
                 {
-                    Bash(door, distance);
+                    InteractWithDoor(door, distance);
                     return false;
+                }
+                if (door != null && door.IsOpen && currentDoorTarget == door)
+                {
+                    currentDoorTarget = null;
+                    doorAction = DoorAction.None;
                 }
                 if (path.Count > 1) target = SchoolMap.TileCenter(path[0]);
             }
@@ -110,29 +113,54 @@ namespace SchoolHorror
             return true;
         }
 
-        void Bash(Door door, float distance)
+        void InteractWithDoor(Door door, float distance)
         {
-            if (door != bashTarget)
-            {
-                bashTarget = door;
-                bashElapsed = 0f;
-                bangTimer = 0f;
-            }
-
             float volume = Mathf.Clamp01(1.1f - distance / 16f);
-            bashElapsed += Time.deltaTime;
-            bangTimer -= Time.deltaTime;
-            if (bangTimer <= 0f)
+
+            // 1. Cửa đang KHÓA: thử mở trong 0.5s với tiếng vặn nắm đấm, không mở được thì đổi hướng
+            if (door.IsLocked)
             {
-                sound.PlayBang(volume);
-                bangTimer = BangInterval;
+                if (currentDoorTarget != door || doorAction != DoorAction.JigglingLocked)
+                {
+                    currentDoorTarget = door;
+                    doorAction = DoorAction.JigglingLocked;
+                    doorActionElapsed = 0f;
+                    sound.PlayDoorHandleJiggle(volume);
+                }
+
+                doorActionElapsed += Time.deltaTime;
+                if (doorActionElapsed >= GameConfig.DoorLockCheckSeconds)
+                {
+                    knownBlockedDoors.Add(door);
+                    currentDoorTarget = null;
+                    doorAction = DoorAction.None;
+                    path.Clear();
+                    repathTimer = 0f; // ép tính toán đường vòng khác ngay
+                }
+                return;
             }
 
-            if (bashElapsed >= GameConfig.ClosedDoorBreakSeconds)
+            // 2. Cửa đang ĐÓNG (không khóa): cố mở cửa, gõ cửa trong thời gian mở rồi bung cửa kêu kẹt
+            if (!door.IsOpen)
             {
-                door.BreakOpen();
-                sound.PlayBang(volume);
-                bashTarget = null;
+                if (knownBlockedDoors.Contains(door)) knownBlockedDoors.Remove(door);
+
+                if (currentDoorTarget != door || doorAction != DoorAction.Knocking)
+                {
+                    currentDoorTarget = door;
+                    doorAction = DoorAction.Knocking;
+                    doorActionElapsed = 0f;
+                    sound.PlayDoorKnock(volume);
+                }
+
+                doorActionElapsed += Time.deltaTime;
+                if (doorActionElapsed >= GameConfig.ClosedDoorBreakSeconds)
+                {
+                    door.BreakOpen();
+                    sound.PlayDoorSqueak(volume);
+                    currentDoorTarget = null;
+                    doorAction = DoorAction.None;
+                }
             }
         }
     }

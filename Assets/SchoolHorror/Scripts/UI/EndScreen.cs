@@ -50,7 +50,7 @@ namespace SchoolHorror
         {
             gameObject.SetActive(true);
             face.enabled = false;
-            ShowMessage("BẠN ĐÃ THOÁT!", new Color(0.55f, 0.9f, 0.65f), new Color(0f, 0f, 0f, 0.88f));
+            ShowMessage("YOU ESCAPED!", new Color(0.55f, 0.9f, 0.65f), new Color(0f, 0f, 0f, 0.88f));
         }
 
         void ShowMessage(string text, Color titleColor, Color backgroundColor)
@@ -60,7 +60,7 @@ namespace SchoolHorror
             title.text = text;
             title.color = titleColor;
             subtitle.enabled = true;
-            subtitle.text = "Nhấn [R] để chơi lại";
+            subtitle.text = "Press [R] to restart";
         }
 
         void Update()
@@ -77,7 +77,7 @@ namespace SchoolHorror
             if (elapsed < ScareDuration) return;
             scaring = false;
             face.enabled = false;
-            ShowMessage("BẠN ĐÃ BỊ BẮT", new Color(0.85f, 0.15f, 0.15f), Color.black);
+            ShowMessage("YOU WERE CAUGHT", new Color(0.85f, 0.15f, 0.15f), Color.black);
         }
     }
 }
