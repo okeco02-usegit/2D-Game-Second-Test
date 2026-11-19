@@ -45,7 +45,7 @@ namespace SchoolHorror
             woodenSteps = Resources.LoadAll<AudioClip>("Audio/WoodenFootsteps");
             stairsSteps = Resources.LoadAll<AudioClip>("Audio/StairsFootsteps");
             concreteSteps = Resources.LoadAll<AudioClip>("Audio/ConcreteFootsteps");
-            creakingDoors = TrimClips(Resources.LoadAll<AudioClip>("Audio/CreakingDoor"), 0.26f);
+            creakingDoors = Resources.LoadAll<AudioClip>("Audio/CreakingDoor");
             monsterGrowls = Resources.LoadAll<AudioClip>("Audio/MonsterGrowl");
             keyPickupClip = Resources.Load<AudioClip>("Audio/MonsterGrowl/Monster Growl (6)") ?? pickup;
             ambientWinds = Resources.LoadAll<AudioClip>("Audio/AmbientWind");
